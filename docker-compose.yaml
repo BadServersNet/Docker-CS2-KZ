@@ -1,0 +1,16 @@
+services:
+  cs2kz:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./.gs:/root/gs
+    environment:
+      SERVER_IP: ${SERVER_IP}
+      SERVER_PORT: ${SERVER_PORT}
+      MAXPLAYERS: ${MAXPLAYERS}
+      SERVER_PASSWORD: ${SERVER_PASSWORD}
+      GSLT: ${GSLT}
+      EXTRA_FLAGS: ${EXTRA_FLAGS}
+    ports:
+      - "${SERVER_PORT}:${SERVER_PORT}/udp"
